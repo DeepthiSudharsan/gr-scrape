@@ -60,7 +60,7 @@ for page in tqdm(page_list):
         review_id = review.get_attribute("id").replace("review_", "")
         review_link = f"https://www.goodreads.com/review/show/{review_id}"
         
-        my_review, image_link = get_review_text(review_link)
+        my_review, image_link, shelves = get_review_text(review_link)
         
         dict_store.append({
             "title": title,
@@ -70,7 +70,8 @@ for page in tqdm(page_list):
             "read_date": read_date,
             "review_link": review_link,
             "my_review": my_review,
-            "image_link": image_link
+            "image_link": image_link,
+            "shelves": shelves
         })
 
 print(colorama.Fore.GREEN + "Data Scraped Successfully!"+ colorama.Style.RESET_ALL)
