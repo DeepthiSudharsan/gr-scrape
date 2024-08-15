@@ -20,5 +20,7 @@ def get_review_text(link):
     anchor_tag = left_container.find_elements(By.TAG_NAME, "a")[0]
     image_tag = anchor_tag.find_elements(By.TAG_NAME, "img")[0]
     image_link = image_tag.get_attribute("src")
+    shelves = driver.find_elements(By.CLASS_NAME, "actionLinkLite")
+    shelves_list = [shelf.text for shelf in shelves]
     
-    return review, image_link
+    return review, image_link, shelves_list
