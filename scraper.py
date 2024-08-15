@@ -9,7 +9,8 @@ from get_review import get_review_text
 driver = webdriver.Chrome()
 driver.get("https://www.goodreads.com/review/list/151962059")
 pagination_elements = driver.find_elements(By.ID, "reviewPagination")[0].text
-page_list = pagination_elements.split()[2:-2]
+num_of_pages = int(pagination_elements.split()[2:-2][-1])
+page_list = [str(i) for i in range(1, num_of_pages+1)]
 page_list = [int(page) for page in page_list[:1]]
 
 
